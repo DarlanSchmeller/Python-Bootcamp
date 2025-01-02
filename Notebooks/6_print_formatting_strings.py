@@ -1,0 +1,1 @@
+print(' This is a string: {}'.format('INSERTED')) # Simple method to insert a string into another string

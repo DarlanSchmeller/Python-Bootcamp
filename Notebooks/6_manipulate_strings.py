@@ -25,4 +25,4 @@ float_value = f"{float_value:1.1f}"
 
 print(float_value)
 
-# f strings are used to insert variables into strings in a simpler way, the syntax is f"string {variable}"
+# f strings are used to insert variables into strings in a simpler way, the syntax is f"string {variable}", it's much simpler than .format

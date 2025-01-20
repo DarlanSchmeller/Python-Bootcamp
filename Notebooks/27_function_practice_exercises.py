@@ -16,15 +16,15 @@
 
 def lesser_two_evens(num1=3, num2=2):
     if (num1 % 2 == 0) and (num2 % 2 == 0):
-        if num1 > num2:
+        if num1 < num2:
             return num1
         else:
             return num2
     else:
         if num1 > num2:
-            return num2
-        else:
             return num1
+        else:
+            return num2
 
 print(lesser_two_evens())
 
@@ -32,7 +32,7 @@ print(lesser_two_evens())
 # #### ANIMAL CRACKERS: Write a function takes a two-word string and returns True if both words begin with same letter
 
 def animal_crackers(string):
-    word1, word2 = string.split()
+    word1, word2 = string.lower().split()
     
     if word1[0] == word2[0]:
         return True
@@ -47,6 +47,8 @@ print(animal_crackers('Two Things'))
 
 def two_integers(int1,int2):
     if sum([int1,int2]) == 20:
+        return True
+    elif int1 == 20 or int2 == 20:
         return True
     else:
         return False
@@ -202,63 +204,49 @@ print(summer_69())
 #      spy_game([1,7,2,0,4,5,0]) --> False
 
 
+def spy_game(list = [1,2,4,0,0,7,5]):
+    list_records = []
 
+    for item in list:
+        if item == 0 or item == 7:
+            list_records.append(str(item))
 
+    if list_records:                        # If the list has items proceed
+        new_list = ''.join(list_records)
 
+        if '007' in new_list:
+            print('007 Was Found!')
+            return True
+        else:
+            return False
+    
+spy_game()
 
-
-
-
-
-
-
-
-
-
-
-
+# ===============================================================================================
 # #### COUNT PRIMES: Write a function that returns the *number* of prime numbers that exist up to and including a given number
 #     count_primes(100) --> 25
 
 # By convention, 0 and 1 are not prime.
-# def count_primes(num):
-#     pass
-                
-# # Check
-# count_primes(100)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# ### Just for fun
-
-
-# #### PRINT BIG: Write a function that takes in a single letter, and returns a 5x5 representation of that letter
-#     print_big('a')
+def count_primes(num=100):
+    if num < 2:
+        return 0
     
-#     out:   *  
-#     out:   *  
-#           * *
-#          *****
-#          *   *
-#          *   *
-# HINT: Consider making a dictionary of possible patterns, and mapping the alphabet to specific 5-line combinations of patterns. <br>For purposes of this exercise, it's ok if your dictionary stops at "E".
-# def print_big(letter):
-#     pass
-# print_big('a')
+    prime_numbers = [2]
+    x = 3
 
-# ## Great Job!
+    while x <= num:
+        for y in range(3,x,2):
+            if x%y == 0:
+                x += 2
+                break
+        else:
+             prime_numbers.append(x)
+             x += 2
+        
+    return len(prime_numbers)
+    
+print(count_primes())
+
+# ===============================================================================================

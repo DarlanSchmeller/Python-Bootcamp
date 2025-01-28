@@ -11,10 +11,11 @@
 # * You should be able to accept input of the player position and then place a symbol on the board
 
 import os
+import random
 os.system('clear')
 
 game_board = ['1','2','3','4','5','6','7','8','9']
-player_turn = 1
+player_turn = random.randint(1,2)
 game_status = True
 
 def display_board(game_board):
@@ -35,7 +36,7 @@ def player_recognition():
     player2 = None
 
     while player_choice not in accepted_choice:
-        choice = input('Player 1: Do you want to be X or O? ').upper()
+        choice = input(f'Player {player_turn}: Do you want to be X or O? ').upper()
 
         if choice in accepted_choice:
             player_choice = choice
@@ -84,32 +85,31 @@ def verify_win(game_board):
     diagonal_line2 = results_string[2] + results_string[4] + results_string[6]
 
 
+    # Verify each horizontal line for a Win
+    if 'XXX' in horizontal_line_1 or 'OOO' in horizontal_line_1:
+        return True
+    elif 'XXX' in horizontal_line_2 or 'OOO' in horizontal_line_2:
+        return True
+    elif 'XXX' in horizontal_line_3 or 'OOO' in horizontal_line_3:
+        return True
+
+    # Verify each horizontal line for a Win
+    if 'XXX' in vertical_line_1 or 'OOO' in vertical_line_1:
+        return True
+    elif 'XXX' in vertical_line_2 or 'OOO' in vertical_line_2:
+        return True
+    elif 'XXX' in vertical_line_3 or 'OOO' in vertical_line_3:
+        return True
+    
+    # Verify each diagonal line for a Win
+    if 'XXX' in diagonal_line1 or 'OOO' in diagonal_line1:
+        return True
+    elif 'XXX' in diagonal_line2 or 'OOO' in diagonal_line2:
+        return True
+
+
     for item in game_board:
-        if item not in ['X', 'O']: # Verify if each field was filled
-
-            # Verify each horizontal line for a Win
-            if 'XXX' in horizontal_line_1 or 'OOO' in horizontal_line_1:
-                return True
-            elif 'XXX' in horizontal_line_2 or 'OOO' in horizontal_line_2:
-                return True
-            elif 'XXX' in horizontal_line_3 or 'OOO' in horizontal_line_3:
-                return True
-
-            # Verify each horizontal line for a Win
-            if 'XXX' in vertical_line_1 or 'OOO' in vertical_line_1:
-                return True
-            elif 'XXX' in vertical_line_2 or 'OOO' in vertical_line_2:
-                return True
-            elif 'XXX' in vertical_line_3 or 'OOO' in vertical_line_3:
-                return True
-            
-            # Verify each diagonal line for a Win
-            if 'XXX' in diagonal_line1 or 'OOO' in diagonal_line1:
-                return True
-            elif 'XXX' in diagonal_line2 or 'OOO' in diagonal_line2:
-                return True
-            
-
+        if item not in ['X', 'O']: # Verify if each field was filled            
             # If it finds an Empty field it returns False so the game can continue
             return False
     
@@ -122,13 +122,15 @@ def game_on(player_turn):
             player_position_choice(game_board, player1, player_turn)
         elif player_turn == 2:
             player_position_choice(game_board, player2, player_turn)
+        os.system('clear')
         display_board(game_board)
 
         if verify_win(game_board) == 'Tie':
             print('Game has tied, no winners.')
             return False
         elif verify_win(game_board) == True:
-            print(f'Game Over, Victory for Player {player_turn}')
+            print(f'Game Over, Victory for Player {player_turn}!')
+            print('')
             return False
 
         else:

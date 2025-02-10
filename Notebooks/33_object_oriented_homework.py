@@ -11,14 +11,14 @@
 
 class Line:
     def __init__(self,coor1,coor2):
-        self.coor_x1, self.coor_y1 = coor1
-        self.coor_x2, self.coor_y2 = coor2
+        self.x1, self.coor_y1 = coor1
+        self.x2, self.coor_y2 = coor2
 
     def distance(self):
-        return ( ((self.coor_x1 - self.coor_x2)**2) + ((self.coor_y1 - self.coor_y2)**2) ) ** 0.5
+        return ( ((self.x1 - self.x2)**2) + ((self.coor_y1 - self.coor_y2)**2) ) ** 0.5
     
     def slope(self):
-        return (self.coor_y2 - self.coor_y1) / (self.coor_x2 - self.coor_x1)
+        return (self.coor_y2 - self.coor_y1) / (self.x2 - self.x1)
     
 my_line = Line((3,2), (8,10))
 print(my_line.distance())

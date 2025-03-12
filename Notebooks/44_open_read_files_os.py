@@ -9,7 +9,7 @@ print(os.listdir("Milestone_Project"))
 
 # Commands for deleting Files
 
-os.unlink('') # Deletes a file from the specified Path
+os.unlink('')     # Deletes a file from the specified Path
 os.rmdir('')      # Deletes a directory but it must be empty first
 
 

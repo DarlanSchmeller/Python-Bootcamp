@@ -34,7 +34,7 @@ zip_obj.extractall()
 # Using Shell Utilities to Zip an entire folder
 
 import shutil
-directory_to_zip = '/home/dev/Desktop/Python-Bootcamp/Notebooks/MyMainPackage'
+directory_to_zip = '/home/dev/Desktop/Python-Bootcamp/MyMainPackage'
 output_filename = 'example'
 
 shutil.make_archive(output_filename, 'zip', directory_to_zip)

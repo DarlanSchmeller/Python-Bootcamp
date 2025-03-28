@@ -20,8 +20,19 @@ def find_phone_number():
                 result = re.findall(telephone_format, text_file_content)
                 if result:
                     phone_numbers_found.append(''.join(result))
-
     for phone_number in phone_numbers_found:
         print(phone_number)
+
+    # ALTERNATE METHOD BELOW
+    print("-------------------------------")
+
+    for folder, sub_folders, files in os.walk(os.getcwd() + '/extracted_content'):
+        for file in files:
+            with open(folder + '/' +file,'r') as f:
+                text = f.read()
+
+            second_result = re.findall(phone_number, text)
+            if second_result:
+                print(''.join(second_result))
 
 find_phone_number()

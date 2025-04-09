@@ -99,3 +99,5 @@ print('-----------------------------')
 # Paste transparent image ontop of other transparent image
 blue.paste(im=red,box=(796,0),mask=red)
 blue.show()
+
+blue.save("purple.png")

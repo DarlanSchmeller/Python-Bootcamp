@@ -4,6 +4,7 @@ hex(246)
 hex(512)
 
 
+
 # Binary
 # Using the function bin() you can convert numbers into their binary format.
 bin(1234)

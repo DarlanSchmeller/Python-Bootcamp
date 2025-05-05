@@ -57,9 +57,9 @@ print(sets_difference)
 # ----------
 # Problem 6: Find all elements that are in either set:
 
-intersection_set = set1.intersection(set2)
+union_set = set1.union(set2)
 print(f'The intersection between {set1} and {set2} is: ')
-print(intersection_set)
+print(union_set)
 
 
 
